@@ -1,32 +1,21 @@
 // Date and Time
+
 let now = new Date();
 console.log(now);
 
 let dateTime = document.querySelector("#dateTime");
 let date = now.getDate();
-let hours = now.getHours();
-let minutes = now.getMinutes();
+let hours = addZero(now.getHours());
+let minutes = addZero(now.getMinutes());
 
 let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
 let day = days[now.getDay()];
 
-let months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-let month = months[now.getMonth()];
-
 dateTime.innerHTML = `${day} ${hours}:${minutes}`;
+
+function addZero(num) {
+  return num < 10 ? `0${num}` : num;
+}
 
 let current_fer = 0;
 let current_cel = 0;
@@ -52,7 +41,7 @@ function showTemperature(response) {
   let humidity = response.data.main.humidity;
   let name = response.data.name;
   let wind = Math.ceil(response.data.wind.speed);
-  console.log(response);
+
   let description = response.data.weather[0].main;
 
   let temp_cel = Math.ceil(response.data.main.temp);
