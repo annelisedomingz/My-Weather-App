@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/5b981a9fcd.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="src/styles.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div class="container">
+      <form class="row search">
+        <div class="col-6 searchInput">
+          <input type="text" id="search-field" placeholder="Search" />
+        </div>
+        <div class="col-3 searchButton">
+          <button type="submit" id="search-button">Search</button>
+        </div>
+        <div class="col-3 currentLocation">
+          <button type="submit" class="location">Current Location</button>
+        </div>
+      </form>
+
+      <div class="row weather">
+        <div class="col-6 placeinfo">
+          <h4 id="city"><strong> </strong></h4>
+          |
+          <h4 id="dateTime">Saturday 12:00</h4>
+          <div class="degree d-flex justify-content-start">
+            <h1><span id="city-temperature"></span>°</h1>
+            <div class="units">
+              <p id="celsius">C°</p>
+              \
+              <p id="fahrenheit">F°</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <h4><strong>Humidity</strong> <span id="city-humidity">0%</span></h4>
+          <h4><strong>Wind</strong> <span id="city-wind"> 0mph</span></h4>
+          <br />
+          <i class="fas fa-cloud-sun cloudSunIcon"></i>
+        </div>
+      </div>
+
+      <div class="row forecast">
+        <div class="col-2 forecastPanel">
+          <p>sun</p>
+          <br />
+          <i class="fas fa-sun sunicon"></i>
+          <br />
+          <p><b>90°</b></p>
+          <p>73°</p>
+        </div>
+        <div class="col-2 forecastPanel">
+          <p>mon</p>
+          <br />
+          <i class="fas fa-cloud-showers-heavy heavyicon"></i>
+          <br />
+          <p><b>88°</b></p>
+          <p>73°</p>
+        </div>
+        <div class="col-2 forecastPanel">
+          <p>tue</p>
+          <br />
+          <i class="fas fa-cloud-showers-heavy heavyicon"></i>
+          <br />
+          <p><b>88°</b></p>
+          <p>73°</p>
+        </div>
+        <div class="col-2 forecastPanel">
+          <p>wed</p>
+          <br />
+          <i class="fas fa-cloud-sun cloudsun"></i>
+          <br />
+          <p><b>84°</b></p>
+          <p>66°</p>
+        </div>
+        <div class="col-2 forecastPanel">
+          <p>thu</p>
+          <br />
+          <i class="fas fa-cloud-sun-rain sunRain"></i>
+          <br />
+          <p><b>81°</b></p>
+          <p>68°</p>
+        </div>
+        <div class="col-2 forecastPanel">
+          <p>fri</p>
+          <br />
+          <i class="fas fa-sun sunIcon"></i>
+          <br />
+          <p><b>79°</b></p>
+          <p>72°</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="gitHubLink">
+      <a href="https://github.com/annelisedomingz/Weather-App">
+        GitHub Repository</a
+      >
+    </div>
+
+    <script src="src/index.js"></script>
+  </body>
+</html>
