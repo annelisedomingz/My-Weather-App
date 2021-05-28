@@ -6,7 +6,7 @@ console.log(now);
 let dateTime = document.querySelector("#dateTime");
 let date = now.getDate();
 let hours = formatHours(now.getHours());
-let minutes = now.getMinutes();
+let minutes = formatMin(now.getMinutes());
 
 let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
 let day = days[now.getDay()];
@@ -19,6 +19,10 @@ function formatHours(hour) {
   } else {
     return hour - 12;
   }
+}
+
+function formatMin(min) {
+  return min < 10 ? `0${min}` : min;
 }
 
 let current_fer = 0;
