@@ -5,16 +5,20 @@ console.log(now);
 
 let dateTime = document.querySelector("#dateTime");
 let date = now.getDate();
-let hours = addZero(now.getHours());
-let minutes = addZero(now.getMinutes());
+let hours = formatHours(now.getHours());
+let minutes = now.getMinutes();
 
 let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
 let day = days[now.getDay()];
 
 dateTime.innerHTML = `${day} ${hours}:${minutes}`;
 
-function addZero(num) {
-  return num < 10 ? `0${num}` : num;
+function formatHours(hour) {
+  if (hour < 13) {
+    return hour;
+  } else {
+    return hour - 12;
+  }
 }
 
 let current_fer = 0;
@@ -41,8 +45,8 @@ function showTemperature(response) {
   let humidity = response.data.main.humidity;
   let name = response.data.name;
   let wind = Math.ceil(response.data.wind.speed);
-
   let description = response.data.weather[0].main;
+  let iconElement = document.querySelector("#icon");
 
   let temp_cel = Math.ceil(response.data.main.temp);
   let temp_fer = Math.ceil(temp_cel * 1.8 + 32);
@@ -63,6 +67,12 @@ function showTemperature(response) {
 
   let weatherDescription = document.querySelector("#weather-condition");
   weatherDescription.innerHTML = `${description}`;
+
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 let changeCity = document.querySelector(".row.search");
