@@ -43,7 +43,8 @@ function searchCityInput(event) {
   search(searchInput.value);
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -75,6 +76,12 @@ function displayForecast() {
 }
 
 //temperature
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "8e4399f0d975e2878379c34ca4703cc5";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&unit=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
 
 function showTemperature(response) {
   let humidity = response.data.main.humidity;
@@ -108,6 +115,8 @@ function showTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 let changeCity = document.querySelector(".row.search");
@@ -159,4 +168,3 @@ let currentLocationButton = document.querySelector(".currentLocation");
 currentLocationButton.addEventListener("click", handleCurrentLoactionClick);
 
 search("New York");
-displayForecast();
