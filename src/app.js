@@ -25,12 +25,9 @@ function formatMin(min) {
   return min < 10 ? `0${min}` : min;
 }
 
-let current_fer = 0;
-let current_cel = 0;
-
 function search(cityName) {
   let apiKey = "8e4399f0d975e2878379c34ca4703cc5";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
 
   axios.get(apiUrl).then(showTemperature);
 }
@@ -95,7 +92,7 @@ function displayForecast(response) {
 function getForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "8e4399f0d975e2878379c34ca4703cc5";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -107,12 +104,10 @@ function showTemperature(response) {
   let iconElement = document.querySelector("#icon");
 
   let temp_cel = Math.ceil(response.data.main.temp);
-  let temp_fer = Math.ceil(temp_cel * 1.8 + 32);
+  let temp_fer = temp_cel;
   renderFahrenheit(temp_fer);
-  renderCelsius(temp_cel);
 
   current_fer = temp_fer;
-  current_cel = temp_cel;
 
   let cityText = document.querySelector("#city strong");
   cityText.innerHTML = name;
@@ -138,20 +133,6 @@ function showTemperature(response) {
 let changeCity = document.querySelector(".row.search");
 changeCity.addEventListener("submit", searchCityInput);
 
-//celsius
-
-function renderCelsius(temp) {
-  let cityTemp = document.querySelector("#city-temperature");
-  cityTemp.innerHTML = temp;
-}
-
-let celsiusToggle = document.querySelector("#celsius");
-celsiusToggle.addEventListener("click", handleCelsiusClick);
-
-function handleCelsiusClick() {
-  renderCelsius(current_cel);
-}
-
 //fahrenheit
 
 function renderFahrenheit(temp) {
@@ -159,18 +140,11 @@ function renderFahrenheit(temp) {
   cityTemp.innerHTML = temp;
 }
 
-let fahrenheitToggle = document.querySelector("#fahrenheit");
-fahrenheitToggle.addEventListener("click", handleFehrenheitClick);
-
-function handleFehrenheitClick() {
-  renderFahrenheit(current_fer);
-}
-
 //geolocation
 
 function currentlocation(position) {
   let apiKey = "8e4399f0d975e2878379c34ca4703cc5";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showTemperature);
 }
 

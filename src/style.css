@@ -47,12 +47,6 @@ p {
   margin: 5px;
 }
 
-#fahrenheit,
-#celsius {
-  cursor: pointer;
-  text-decoration: underline;
-}
-
 .forecastPanel {
   margin-top: 25px;
   text-align: center;
